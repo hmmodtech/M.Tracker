@@ -1136,9 +1136,9 @@ function beep(freq, dur) {
     var g   = ctx.createGain();
     osc.connect(g); g.connect(ctx.destination);
     osc.frequency.value = freq || 880;
-    g.gain.setValueAtTime(0, ctx.currentTime);
+    g.gain.setValueAtTime(1, ctx.currentTime);
     g.gain.linearRampToValueAtTime(0.1, ctx.currentTime + 0.01);
-    g.gain.linearRampToValueAtTime(0, ctx.currentTime + (dur || 0.22));
+    g.gain.linearRampToValueAtTime(0, ctx.currentTime + (dur || 0.5));
     osc.start(); osc.stop(ctx.currentTime + (dur || 0.22));
   } catch(e) {}
 }
